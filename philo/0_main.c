@@ -14,5 +14,5 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	//função que vai dar inicio a tudo
-	return(0)
+	return(0);
 }

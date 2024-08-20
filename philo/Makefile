@@ -37,7 +37,7 @@ $(NAME): $(OBJFILES)
 	@if [ ! -f $(NAME) ]; then \
 		$(MAKE) ascii_art; \
 	fi
-	$(CC) $(OBJFILES) $(CFLAGS) -o $(NAME) -g
+	$(CC) $(OBJFILES) $(CFLAGS) -o $(NAME) -g -pthread
 
 ascii_art:
 	@echo "\033[0;32m"
