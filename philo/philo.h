@@ -27,5 +27,7 @@ typedef struct s_philo
 }t_philo;
 
 //Functions
+long	ft_atol(const char *nptr);
+int validate_args(char **args);
 
 #endif
