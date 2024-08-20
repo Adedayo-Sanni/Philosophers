@@ -17,13 +17,15 @@ CFLAGS = -Wall -Werror -Wextra -g3
 #--------------PATHS----------------------------#
 
 OBJFOLDER = objs/
-SOURCES = ./sources/
 
 #--------------FILES----------------------------#
-SRC = $(SOURCES)main.c \
+SRC = 0_main.c \
+ 1_validate.c \
+ 2_init.c \
+ 3_philo_actions.c \
 #--------------RULES----------------------------#
 
-OBJFILES = $(subst $(SOURCES),$(OBJFOLDER),$(SRC:.c=.o))
+OBJFILES = $(patsubst %.c, $(OBJFOLDER)%.o, $(SRC))
 
 all: $(OBJFOLDER) $(NAME)
 

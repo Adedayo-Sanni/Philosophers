@@ -1,4 +1,7 @@
-#include "../include/philo.h"
+
+
+
+#include "philo.h"
 
 int main (void)
 {
