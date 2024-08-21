@@ -13,7 +13,7 @@
 NAME = philo
 
 #--------------FLAGS----------------------------#
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -g3 -pthread
 #--------------PATHS----------------------------#
 
 OBJFOLDER = objs/
@@ -37,7 +37,7 @@ $(NAME): $(OBJFILES)
 	@if [ ! -f $(NAME) ]; then \
 		$(MAKE) ascii_art; \
 	fi
-	$(CC) $(OBJFILES) $(CFLAGS) -o $(NAME) -g -pthread
+	$(CC) $(OBJFILES) $(CFLAGS) -o $(NAME) -g 
 
 ascii_art:
 	@echo "\033[0;32m"
