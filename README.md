@@ -1,4 +1,4 @@
-![Philo Header](https://github.com/Adedayo-Sanni/Philo/blob/main/philo/Philo/19.png)
+![Philo Header](https://github.com/Adedayo-Sanni/Philosophers/blob/main/extras/19.png)
 
 # Philo
 
@@ -43,3 +43,6 @@ O objetivo deste projeto é aprender e aplicar conceitos de programação concor
 
 ### Execução
 Após a compilação, o programa pode ser executado com os seguintes parâmetros:
+```bash
+./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
+./philo 5 800 200 200
