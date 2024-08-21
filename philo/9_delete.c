@@ -1,48 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_validate.c                                       :+:      :+:    :+:   */
+/*   9_delete.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 17:06:45 by asanni            #+#    #+#             */
-/*   Updated: 2024/08/21 18:57:56 by asanni           ###   ########.fr       */
+/*   Created: 2024/08/21 19:02:17 by asanni            #+#    #+#             */
+/*   Updated: 2024/08/21 19:32:24 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	is_valid(char *str)
-{
-	long	nbr;
+int	g_x = 2;
 
-	if (!str)
-		return (1);
-	nbr = ft_atol(str);
-	if (nbr == -2)
-	{
-		printf("Only numbers allowed\n");
-		return (1);
-	}
-	if (nbr < 0)
-	{
-		printf("Only positive numbers allowed!\n");
-		return (1);
-	}
-	if (nbr > 2147483647)
-	{
-		printf("Max int is 2147483647\n");
-		return (1);
-	}
-	return (0);
+void*	routine()
+{
+	sleep(1);
+	printf("valor de x = %d\n", g_x);
+	return (NULL);
 }
 
-int	validate_args(char **args)
+void*	routine2()
 {
-	int	i;
+	g_x++;
+	sleep(1);
+	printf("valor de x = %d\n", g_x);
+	return (NULL);
+}
 
-	i = 1;
-	while (args[i])
-		is_valid(args[i++]);
+int	main(void)
+{
+	pthread_t	t1;
+	pthread_t	t2;
+
+	pthread_create(&t1, NULL, &routine, NULL);
+	pthread_create(&t2, NULL, &routine2, NULL);
+	pthread_join(t1, NULL);
+	pthread_join(t2, NULL);
 	return (0);
 }
