@@ -27,7 +27,6 @@
 // 	return (0);
 // }
 
-
 //continuar playlist do codevault
 // não tentar implementar várias mutex ao mesmo tempo
 // faz um e testa. Rodou liso? Pode ir para outro mutex
