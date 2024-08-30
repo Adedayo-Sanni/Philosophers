@@ -23,11 +23,14 @@
 
 typedef struct s_philo
 {
-
 }t_philo;
+
+typedef struct s_dinner
+{
+}t_dinner;
 
 //Functions
 long	ft_atol(const char *nptr);
-int validate_args(char **args);
+int		validate_args(char **args);
 
 #endif
