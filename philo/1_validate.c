@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:06:45 by asanni            #+#    #+#             */
-/*   Updated: 2024/08/21 18:57:56 by asanni           ###   ########.fr       */
+/*   Updated: 2024/09/14 17:03:23 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,32 @@ int	is_valid(char *str)
 	return (0);
 }
 
+int	min__time_validation(char *arg)
+{
+	long	nbr;
+
+	nbr = ft_atol(arg);
+	if (nbr < 60)
+	{
+		printf("Min time to die should be 60ms!\n");
+		return (1);
+	}
+	return (0);
+}
+
+int	max_philo_validation(char *arg)
+{
+	long	nbr;
+
+	nbr = ft_atol(arg);
+	if (nbr > 200)
+	{
+		printf("Max philos should be 200ms!\n");
+		return (1);
+	}
+	return (0);
+}
+
 int	validate_args(char **args)
 {
 	int	i;
@@ -44,5 +70,7 @@ int	validate_args(char **args)
 	i = 1;
 	while (args[i])
 		is_valid(args[i++]);
+	min__time_validation(args[2]);
+	max_philo_validation(args[1]);
 	return (0);
 }
