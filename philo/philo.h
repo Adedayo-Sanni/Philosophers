@@ -25,8 +25,7 @@
 typedef struct s_mutex
 {
 	pthread_mutex_t		mutex;
-	long int			state;
-}t_mutex;
+}	t_mutex;
 
 typedef struct s_data
 {
@@ -35,25 +34,41 @@ typedef struct s_data
 	int					time_to_eat;
 	int					time_to_sleep;
 	int					nb_meals_todo;
-}t_data;
+	int					philo_died;
+}	t_data;
 
 typedef struct s_philo
 {
-	pthread_t	philo;
-	t_mutex		left_fork;
-	t_mutex		right_fork;
-	int			philo_id;
-	int			max_meal;
-	int			meals_had;
-}t_philo;
+	pthread_t			self_thread;
+	t_mutex				*left_fork;
+	t_mutex				*right_fork;
+	int					philo_id;
+	int					max_meal;
+	int					meals_had;
+	long int			time_last_meal;
+	t_data				*data;
+}	t_philo;
 
-// contém todas as outras structs
+// Estrutura que contém todas as outras structs
 typedef struct s_dinner
 {
-}t_dinner;
+	t_philo		*philos;
+	t_data		*data;
+	t_mutex		*forks;
+}	t_dinner;
+
+typedef enum e_type
+{
+	PHILO = 1,
+	FORK,
+	DATA,
+}	t_type;
 
 //Functions
 long	ft_atol(const char *nptr);
 int		validate_args(char **args);
-
+void	init_dinner(t_dinner *dinner, char **argv, int argc);
+void	start_data(t_dinner *dinner, char **argv, int argc);
+void	cleanup(t_dinner *dinner);
+void	error_exit(char *msg, int status, int clean, t_dinner *dinner);
 #endif

@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:06:45 by asanni            #+#    #+#             */
-/*   Updated: 2024/09/14 17:03:23 by asanni           ###   ########.fr       */
+/*   Updated: 2024/09/16 15:34:29 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_valid(char *str)
 		printf("Only numbers allowed\n");
 		return (1);
 	}
-	if (nbr < 0)
+	if (nbr <= 0)
 	{
 		printf("Only positive numbers allowed!\n");
 		return (1);

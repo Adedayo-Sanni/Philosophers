@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/08/21 18:43:38 by asanni           ###   ########.fr       */
+/*   Updated: 2024/09/17 19:10:54 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,12 @@ long	ft_atol(const char *nptr)
 	if (nptr[i] != '\0')
 		return (-2);
 	return (sign * result);
+}
+
+long long	current_timestamp(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }

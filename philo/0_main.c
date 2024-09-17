@@ -14,6 +14,8 @@
 
 int	main(int argc, char **argv)
 {
+	t_dinner	*dinner;
+
 	if (argc < 5 || argc > 6)
 	{
 		printf("Wrong number of arguments\nThe program should be run as follows:"
@@ -24,8 +26,11 @@ int	main(int argc, char **argv)
 	if (validate_args(argv) == 1)
 		return (1);
 	else
-		//init_dinner();
-	//função que vai dar inicio a tudo
+	{
+		dinner = calloc(1, sizeof(t_dinner));
+		init_dinner(dinner, argv, argc);
+	}
+	//cleanup();
 	return (0);
 }
 
