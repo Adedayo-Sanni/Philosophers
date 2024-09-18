@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		dinner = calloc(1, sizeof(t_dinner));
 		init_dinner(dinner, argv, argc);
 	}
-	//cleanup();
+	cleanup(dinner);
 	return (0);
 }
 
