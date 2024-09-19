@@ -6,7 +6,7 @@
 /*   By: adedayo <adedayo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/09/19 20:15:23 by adedayo          ###   ########.fr       */
+/*   Updated: 2024/09/19 20:44:28 by adedayo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	init_dinner(t_dinner *dinner, char **argv, int argc)
 	if (!dinner->data)
 		error_exit("Erro ao alocar memória", 1, DATA, dinner);
 	start_data(dinner, argv, argc);
+	init_philos(dinner);
+	init_forks(dinner);
 }
 
 void	start_data(t_dinner *dinner, char **argv, int argc)
@@ -47,10 +49,24 @@ void	init_philos(t_dinner *dinner)
 	}
 }
 
-void init_forks(t_dinner *dinner, int i)
+void init_forks(t_dinner *dinner)
 {
-    if (i >= dinner->data->nb_philos)
-        return;
-    pthread_mutex_init(&dinner->forks[i].mutex, NULL);
-    init_forks(dinner, i + 1);
+    int i;
+
+    if (!dinner || !dinner->data)
+        error_exit("Dados inválidos", 1, DATA, dinner);
+
+    dinner->forks = malloc(dinner->data->nb_philos * sizeof(t_mutex));
+    if (!dinner->forks)
+        error_exit("Erro ao alocar memória para os garfos", 1, FORK, dinner);
+
+    i = 0;
+    while (i < dinner->data->nb_philos)
+    {
+        if (pthread_mutex_init(&dinner->forks[i].mutex, NULL) != 0)
+            error_exit("Erro ao inicializar mutex do garfo", 1, FORK, dinner);
+        i++;
+    }
 }
+
+
