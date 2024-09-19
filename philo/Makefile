@@ -22,7 +22,7 @@ OBJFOLDER = objs/
 SRC = 0_main.c \
  1_validate.c \
  2_init.c \
- 3_philo_actions.c \
+ 3_philo_routines.c \
  7_free.c\
  8_utils.c \
  9_delete.c \
