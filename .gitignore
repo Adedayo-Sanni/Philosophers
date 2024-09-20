@@ -1,6 +1,0 @@
-.vscode/
-*.o
-objs/
-escopo.txt
-.nfs*
-philo
