@@ -73,4 +73,6 @@ void	init_philos(t_dinner *dinner);
 void	init_forks(t_dinner *dinner);
 void	cleanup(t_dinner *dinner);
 void	error_exit(char *msg, int status, int clean, t_dinner *dinner);
+
+void *philos_routines(void *philo_arg);
 #endif
