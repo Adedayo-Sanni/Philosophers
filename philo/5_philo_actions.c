@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/09/20 16:37:52 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/12 15:46:17 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 void	take_fork(t_philo philos)
 {
+	if (philos.philo_id % 2 == 1)
+	{
+		//take left fork 
+		//take right fork
+	}
+	else
+	{
+		//take right fork
+		//take left fork
+	}
 }
 
 void	eat(t_philo philos)
