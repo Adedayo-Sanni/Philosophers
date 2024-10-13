@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   8_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adedayo <adedayo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/09/17 19:10:54 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/12 23:39:18 by adedayo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,14 @@ long long	current_timestamp(void)
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+void	print_msg(long long time, t_dinner *dinner, char *msg)
+{
+		if(se não tiver ningeum morto)
+		{
+			pthread_mutex_lock(&dinner->message);
+			printf("%lld %d %s", time, dinner->philos->philo_id, msg );
+			pthread_mutex_unlock(&dinner->message);
+		}
 }

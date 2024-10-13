@@ -55,6 +55,8 @@ typedef struct s_dinner
 	t_philo		*philos;
 	t_data		*data;
 	t_mutex		*forks;
+	t_mutex		*message;
+	t_mutex		*time;
 }	t_dinner;
 
 typedef enum e_type
@@ -74,4 +76,8 @@ void	init_forks(t_dinner *dinner);
 void	cleanup(t_dinner *dinner);
 void	error_exit(char *msg, int status, int clean, t_dinner *dinner);
 void	*philos_routines(void *philo_arg);
+void	print_msg(long long time, t_dinner *dinner, char *msg);
+long long	current_timestamp(void);
+void  lock_fork(t_dinner *dinner, int fork_nbr);
+
 #endif

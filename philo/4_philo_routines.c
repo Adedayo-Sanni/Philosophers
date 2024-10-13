@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_philo_routines.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adedayo <adedayo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:17:48 by adedayo           #+#    #+#             */
-/*   Updated: 2024/09/20 17:07:59 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/13 00:04:46 by adedayo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //essa função será o 3 parametro da thread join
 void	*philos_routines(void *philo_arg)
 {
-// while (estiver vivos && satisfeitos)
+	while (estiver vivos && !satisfeitos)
 	{
 
 		// Filósofo tenta pegar os garfos
