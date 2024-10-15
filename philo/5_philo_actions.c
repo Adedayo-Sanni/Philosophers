@@ -6,23 +6,23 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/15 17:10:48 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/15 20:48:27 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	take_fork(t_dinner *dinner)
+void	take_fork(t_philo *philo)
 {
-	if (dinner->philos->philo_id % 2 == 1)
+	if (philo->philo_id % 2 == 1)
 	{
-		lock_fork(dinner, dinner->philos->left_fork);
-		lock_fork(dinner, dinner->philos->right_fork);
+		lock_fork(philo, philo->left_fork);
+		lock_fork(philo, philo->right_fork);
 	}
 	else
 	{
-		lock_fork(dinner, dinner->philos->right_fork);
-		lock_fork(dinner, dinner->philos->left_fork);
+		lock_fork(philo, philo->right_fork);
+		lock_fork(philo, philo->left_fork);
 	}
 }
 

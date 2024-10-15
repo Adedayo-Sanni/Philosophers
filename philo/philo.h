@@ -24,17 +24,17 @@
 
 typedef struct s_mutex
 {
-	pthread_mutex_t		mutex;
+	pthread_mutex_t		one_fork;
 }	t_mutex;
 
 typedef struct s_data
 {
-	short int			nb_philos;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
-	int					nb_meals_todo;
-	int					philo_died;
+	short int				nb_philos;
+	long int				time_to_die;
+	int						time_to_eat;
+	int						time_to_sleep;
+	int						nb_meals_todo;
+	int						philo_died;
 }	t_data;
 
 typedef struct s_philo
@@ -78,6 +78,8 @@ void		error_exit(char *msg, int status, int clean, t_dinner *dinner);
 void		*philos_routines(void *philo_arg);
 void		print_msg(long long time, t_dinner *dinner, char *msg);
 long long	current_timestamp(void);
-void		lock_fork(t_dinner *dinner, int fork_nbr);
+void		lock_fork(t_philo *philo, t_mutex *forks);
+int			is_alive(t_dinner *dinner);
+int			is_satisfied(t_dinner *dinner);
 
 #endif

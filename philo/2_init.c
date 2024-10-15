@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_init.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adedayo <adedayo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/12 23:45:54 by adedayo          ###   ########.fr       */
+/*   Updated: 2024/10/15 20:07:21 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,18 @@ void	init_forks(t_dinner *dinner)
 		error_exit("Invalid data", 1, DATA, dinner);
 	dinner->forks = malloc(dinner->data->nb_philos * sizeof(t_mutex));
 	if (!dinner->forks)
+	{
 		error_exit("Sorry, were out of forks", 1, FORK, dinner);
+		return ;
+	}
 	i = 0;
 	while (i < dinner->data->nb_philos)
 	{
 		if (pthread_mutex_init(&dinner->forks[i].mutex, NULL) != 0)
+		{
 			error_exit("Sorry, were out of forks", 1, FORK, dinner);
+			return ;
+		}
 		i++;
 	}
 }

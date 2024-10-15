@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:46:08 by adedayo           #+#    #+#             */
-/*   Updated: 2024/09/20 17:06:30 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/15 20:04:49 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,25 @@ void	start_philos(t_dinner *dinner)
 	int	i;
 
 	i = 0;
+	dinner->start_time = current_timestamp();
 	while (i < dinner->data->nb_philos)
 	{
 		if (pthread_create(&dinner->philos[i].self_thread, NULL,
 				philos_routines, &dinner->philos[i]) != 0)
+		{
 			error_exit("The guests could not come", 1, PHILO, dinner);
+			return ;
+		}
 		i++;
 	}
 	i = 0;
 	while (i < dinner->data->nb_philos)
 	{
 		if (pthread_join(dinner->philos[i].self_thread, NULL) != 0)
+		{
 			error_exit("The guests wont leave", 1, PHILO, dinner);
+			return ;
+		}
 		i++;
 	}
 }
