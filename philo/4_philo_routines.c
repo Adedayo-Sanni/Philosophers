@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_philo_routines.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adedayo <adedayo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:17:48 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/13 00:04:46 by adedayo          ###   ########.fr       */
+/*   Updated: 2024/10/15 17:10:29 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // aqui chamar e implementar todas as ações dos filos
 //essa função será o 3 parametro da thread join
+
 void	*philos_routines(void *philo_arg)
 {
 	while (estiver vivos && !satisfeitos)

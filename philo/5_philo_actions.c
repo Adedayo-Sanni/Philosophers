@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   5_philo_actions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adedayo <adedayo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/13 00:02:22 by adedayo          ###   ########.fr       */
+/*   Updated: 2024/10/15 17:10:48 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	think(t_dinner *dinner)
 
 void	release_fork(t_dinner *dinner, int fork_nbr)
 {
-	 pthread_mutex_unlock(&dinner->forks[fork_nbr]);
+	pthread_mutex_unlock(&dinner->forks[fork_nbr]);
 }

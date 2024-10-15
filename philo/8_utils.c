@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   8_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adedayo <adedayo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/12 23:39:18 by adedayo          ###   ########.fr       */
+/*   Updated: 2024/10/15 17:13:35 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ long	ft_atol(const char *nptr)
 	return (sign * result);
 }
 
+
 long long	current_timestamp(void)
 {
 	struct timeval	time;
@@ -51,7 +52,7 @@ long long	current_timestamp(void)
 
 void	print_msg(long long time, t_dinner *dinner, char *msg)
 {
-		if(se não tiver ningeum morto)
+		if(se não tiver ninguem morto)
 		{
 			pthread_mutex_lock(&dinner->message);
 			printf("%lld %d %s", time, dinner->philos->philo_id, msg );

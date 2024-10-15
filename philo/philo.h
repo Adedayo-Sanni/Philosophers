@@ -52,11 +52,11 @@ typedef struct s_philo
 // Estrutura que contém todas as outras structs
 typedef struct s_dinner
 {
-	t_philo		*philos;
-	t_data		*data;
-	t_mutex		*forks;
-	t_mutex		*message;
-	t_mutex		*time;
+	t_philo			*philos;
+	t_data			*data;
+	t_mutex			*forks;
+	t_mutex			*message;
+	long long		start_time;
 }	t_dinner;
 
 typedef enum e_type
@@ -67,17 +67,17 @@ typedef enum e_type
 }	t_type;
 
 //Functions
-long	ft_atol(const char *nptr);
-int		validate_args(char **args);
-void	init_dinner(t_dinner *dinner, char **argv, int argc);
-void	start_data(t_dinner *dinner, char **argv, int argc);
-void	init_philos(t_dinner *dinner);
-void	init_forks(t_dinner *dinner);
-void	cleanup(t_dinner *dinner);
-void	error_exit(char *msg, int status, int clean, t_dinner *dinner);
-void	*philos_routines(void *philo_arg);
-void	print_msg(long long time, t_dinner *dinner, char *msg);
+long		ft_atol(const char *nptr);
+int			validate_args(char **args);
+void		init_dinner(t_dinner *dinner, char **argv, int argc);
+void		start_data(t_dinner *dinner, char **argv, int argc);
+void		init_philos(t_dinner *dinner);
+void		init_forks(t_dinner *dinner);
+void		cleanup(t_dinner *dinner);
+void		error_exit(char *msg, int status, int clean, t_dinner *dinner);
+void		*philos_routines(void *philo_arg);
+void		print_msg(long long time, t_dinner *dinner, char *msg);
 long long	current_timestamp(void);
-void  lock_fork(t_dinner *dinner, int fork_nbr);
+void		lock_fork(t_dinner *dinner, int fork_nbr);
 
 #endif

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   6_fork.c                                           :+:      :+:    :+:   */
+/*   9_philo_verifs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 23:20:04 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/15 17:05:35 by asanni           ###   ########.fr       */
+/*   Created: 2024/10/15 17:09:26 by asanni            #+#    #+#             */
+/*   Updated: 2024/10/15 17:09:42 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	lock_fork(t_dinner *dinner, int fork_nbr)
+int	is_alive(t_dinner *dinner)
 {
-	pthread_mutex_lock(&dinner->forks[fork_nbr]);
-	print_msg(dinner->start_time, dinner->philos->philo_id, "Has taken a fork");
+	
 }
