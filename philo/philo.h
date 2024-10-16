@@ -74,12 +74,17 @@ void		start_data(t_dinner *dinner, char **argv, int argc);
 void		init_philos(t_dinner *dinner);
 void		init_forks(t_dinner *dinner);
 void		cleanup(t_dinner *dinner);
-void		error_exit(char *msg, int status, int clean, t_dinner *dinner);
+void		error_exit(char *msg, int clean, t_dinner *dinner);
 void		*philos_routines(void *philo_arg);
-void		print_msg(long long time, t_dinner *dinner, char *msg);
-long long	current_timestamp(void);
+void		print_msg(long long time, t_philo *philo, char *msg);
+long long	current_time(void);
 void		lock_fork(t_philo *philo, t_mutex *forks);
-int			is_alive(t_dinner *dinner);
-int			is_satisfied(t_dinner *dinner);
+int			is_alive(t_philo *philo);
+int			is_satisfied(t_philo *philo);
+void		take_fork(t_philo *philo);
+void		philo_eat(t_philo *philo);
+void		philo_sleep(t_philo *philo);
+void		think(t_philo *philo);
+void		release_fork(t_philo *philo);
 
 #endif

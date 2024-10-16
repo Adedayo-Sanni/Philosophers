@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/16 18:09:32 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 20:02:42 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	ft_atol(const char *nptr)
 	return (sign * result);
 }
 
-long long	current_timestamp(void)
+long long	current_time(void)
 {
 	struct timeval	time;
 
@@ -49,12 +49,12 @@ long long	current_timestamp(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	print_msg(long long time, t_dinner *philo, char *msg)
+void	print_msg(long long time, t_philo *philo, char *msg)
 {
 	if (!philo->data->philo_died)
 	{
-		//pthread_mutex_lock(&dinner->message);
-		printf("%lld %d %s", time, philo->philos->philo_id, msg);
-		//pthread_mutex_unlock(&dinner->message);
+		pthread_mutex_lock(&philo->data->message->one_fork);
+		printf("%lld %d %s", time, philo->philo_id, msg);
+		pthread_mutex_unlock(&philo->data->message->one_fork);
 	}
 }

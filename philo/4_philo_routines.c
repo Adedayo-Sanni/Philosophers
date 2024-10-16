@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:17:48 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/16 16:16:33 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 19:41:25 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	*philos_routines(void *philo_arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_arg;
-	while (is_alive == 1 && is_satisfied == 0)
+	while (is_alive(philo) == 1 && is_satisfied(philo) == 0)
 	{
-		take_fork(philo);
+		//pegar garfo
 
 		// Filósofo come
 

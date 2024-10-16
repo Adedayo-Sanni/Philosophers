@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:25:24 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/15 20:02:25 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 20:01:33 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	free_forks(t_dinner *dinner)
 	while (i != 0)
 	{
 		i--;
-		pthread_mutex_destroy(&dinner->forks[i].mutex);
+		pthread_mutex_destroy(&dinner->forks[i].one_fork);
 	}
 	free(dinner->forks);
 }
 
-void	error_exit(char *msg, int status, int clean, t_dinner *dinner)
+void	error_exit(char *msg, int clean, t_dinner *dinner)
 {
 	printf("%s", msg);
 	if (clean >= 3)
