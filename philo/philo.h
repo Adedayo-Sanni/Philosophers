@@ -24,29 +24,31 @@
 
 typedef struct s_mutex
 {
-	pthread_mutex_t		one_fork;
+	pthread_mutex_t	one_fork;
 }	t_mutex;
 
 typedef struct s_data
 {
-	short int				nb_philos;
-	long int				time_to_die;
-	int						time_to_eat;
-	int						time_to_sleep;
-	int						nb_meals_todo;
-	int						philo_died;
+	short int	nb_philos;
+	long int	time_to_die;
+	long long	start_time;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			nb_meals_todo;
+	int			philo_died;
+	t_mutex		*message;
 }	t_data;
 
 typedef struct s_philo
 {
-	pthread_t			self_thread;
-	t_mutex				*left_fork;
-	t_mutex				*right_fork;
-	int					philo_id;
-	int					max_meal;
-	int					meals_had;
-	long int			time_last_meal;
-	t_data				*data;
+	pthread_t	self_thread;
+	t_mutex		*left_fork;
+	t_mutex		*right_fork;
+	int			philo_id;
+	int			max_meal;
+	int			meals_had;
+	long int	time_last_meal;
+	t_data		*data;
 }	t_philo;
 
 // Estrutura que contém todas as outras structs
@@ -55,8 +57,6 @@ typedef struct s_dinner
 	t_philo			*philos;
 	t_data			*data;
 	t_mutex			*forks;
-	t_mutex			*message;
-	long long		start_time;
 }	t_dinner;
 
 typedef enum e_type

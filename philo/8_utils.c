@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/15 19:24:00 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 18:09:32 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ long long	current_timestamp(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	print_msg(long long time, t_dinner *dinner, char *msg)
+void	print_msg(long long time, t_dinner *philo, char *msg)
 {
-	if (!dinner->data->philo_died)
+	if (!philo->data->philo_died)
 	{
-		pthread_mutex_lock(&dinner->message);
-		printf("%lld %d %s", time, dinner->philos->philo_id, msg);
-		pthread_mutex_unlock(&dinner->message);
+		//pthread_mutex_lock(&dinner->message);
+		printf("%lld %d %s", time, philo->philos->philo_id, msg);
+		//pthread_mutex_unlock(&dinner->message);
 	}
 }

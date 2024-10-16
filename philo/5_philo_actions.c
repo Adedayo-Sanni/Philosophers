@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/15 20:48:27 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 17:52:21 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,22 @@ void	take_fork(t_philo *philo)
 	}
 }
 
-void	eat(t_dinner *dinner)
+void	eat(t_philo *philo)
+{
+	usleep(philo->data->time_to_eat * 1000);
+}
+
+void	sleep(t_philo *philo)
+{
+	usleep(philo->data->time_to_sleep * 1000);
+}
+
+void	think(t_philo *philo)
 {
 }
 
-void	sleep(t_dinner *dinner)
+void	release_fork(t_philo *philo)
 {
-}
-
-void	think(t_dinner *dinner)
-{
-}
-
-void	release_fork(t_dinner *dinner, int fork_nbr)
-{
-	pthread_mutex_unlock(&dinner->forks[fork_nbr]);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }

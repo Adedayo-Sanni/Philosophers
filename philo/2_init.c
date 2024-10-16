@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/15 20:07:21 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 18:01:06 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	init_forks(t_dinner *dinner)
 	i = 0;
 	while (i < dinner->data->nb_philos)
 	{
-		if (pthread_mutex_init(&dinner->forks[i].mutex, NULL) != 0)
+		if (pthread_mutex_init(&dinner->forks[i].one_fork, NULL) != 0)
 		{
 			error_exit("Sorry, were out of forks", 1, FORK, dinner);
 			return ;

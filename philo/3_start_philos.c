@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:46:08 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/15 20:04:49 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 18:00:19 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	start_philos(t_dinner *dinner)
 	int	i;
 
 	i = 0;
-	dinner->start_time = current_timestamp();
+	dinner->data->start_time = current_timestamp();
 	while (i < dinner->data->nb_philos)
 	{
 		if (pthread_create(&dinner->philos[i].self_thread, NULL,
