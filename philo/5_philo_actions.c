@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/16 19:58:58 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 20:42:50 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,28 @@ void	take_fork(t_philo *philo)
 	{
 		print_msg(philo->data->start_time - current_time(), philo,
 			"has taken a fork");
-		pthread_mutex_lock(&philo->left_fork->one_fork);
+		pthread_mutex_lock(philo->left_fork);
 		print_msg(philo->data->start_time - current_time(), philo,
 			"has taken a fork");
-		pthread_mutex_lock(&philo->left_fork->one_fork);
+		pthread_mutex_lock(philo->right_fork);
 	}
 	else
 	{
 		print_msg(philo->data->start_time - current_time(), philo,
 			"has taken a fork");
-		pthread_mutex_lock(&philo->left_fork->one_fork);
+		pthread_mutex_lock(philo->right_fork);
 		print_msg(philo->data->start_time - current_time(), philo,
 			"has taken a fork");
-		pthread_mutex_lock(&philo->left_fork->one_fork);
+		pthread_mutex_lock(philo->left_fork);
 	}
 }
 
 void	philo_eat(t_philo *philo)
 {
-	long long	time;
-
-	time = philo->data->start_time - current_time();
 	print_msg(philo->data->start_time - current_time(), philo, "is eating");
+// lock
+	philo->time_last_meal = current_time();
+// unlock
 	usleep(philo->data->time_to_eat * 1000);
 }
 
@@ -56,6 +56,6 @@ void	philo_thinks(t_philo *philo)
 
 void	release_fork(t_philo *philo)
 {
-	pthread_mutex_unlock(&philo->left_fork->one_fork);
-	pthread_mutex_unlock(&philo->right_fork->one_fork);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }

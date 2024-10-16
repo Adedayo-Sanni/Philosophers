@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:25:24 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/16 20:01:33 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 20:39:58 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_forks(t_dinner *dinner)
 	while (i != 0)
 	{
 		i--;
-		pthread_mutex_destroy(&dinner->forks[i].one_fork);
+		pthread_mutex_destroy(&dinner->forks[i]);
 	}
 	free(dinner->forks);
 }

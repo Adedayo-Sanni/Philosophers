@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/16 18:01:06 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/16 20:39:46 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_dinner(t_dinner *dinner, char **argv, int argc)
 {
 	dinner->data = calloc(1, sizeof(t_data));
 	if (!dinner->data)
-		error_exit("You are not on the list", 1, DATA, dinner);
+		error_exit("You are not on the list", DATA, dinner);
 	start_data(dinner, argv, argc);
 	init_philos(dinner);
 	init_forks(dinner);
@@ -38,7 +38,7 @@ void	init_philos(t_dinner *dinner)
 
 	dinner->philos = malloc(dinner->data->nb_philos * sizeof(t_philo));
 	if (!dinner->philos)
-		error_exit("Where is the guests?", 1, PHILO, dinner);
+		error_exit("Where is the guests?", PHILO, dinner);
 	i = 0;
 	while (i < dinner->data->nb_philos)
 	{
@@ -58,19 +58,19 @@ void	init_forks(t_dinner *dinner)
 	int	i;
 
 	if (!dinner || !dinner->data)
-		error_exit("Invalid data", 1, DATA, dinner);
+		error_exit("Invalid data", DATA, dinner);
 	dinner->forks = malloc(dinner->data->nb_philos * sizeof(t_mutex));
 	if (!dinner->forks)
 	{
-		error_exit("Sorry, were out of forks", 1, FORK, dinner);
+		error_exit("Sorry, were out of forks", FORK, dinner);
 		return ;
 	}
 	i = 0;
 	while (i < dinner->data->nb_philos)
 	{
-		if (pthread_mutex_init(&dinner->forks[i].one_fork, NULL) != 0)
+		if (pthread_mutex_init(&dinner->forks[i], NULL) != 0)
 		{
-			error_exit("Sorry, were out of forks", 1, FORK, dinner);
+			error_exit("Sorry, were out of forks", FORK, dinner);
 			return ;
 		}
 		i++;
