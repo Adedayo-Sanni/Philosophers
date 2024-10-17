@@ -22,11 +22,6 @@
 
 //Structs
 
-typedef struct s_mutex
-{
-	pthread_mutex_t	one_fork;
-}	t_mutex;
-
 typedef struct s_data
 {
 	short int		nb_philos;
@@ -78,7 +73,6 @@ void		error_exit(char *msg, int clean, t_dinner *dinner);
 void		*philos_routines(void *philo_arg);
 void		print_msg(long long time, t_philo *philo, char *msg);
 long long	current_time(void);
-void		lock_fork(t_philo *philo, t_mutex *forks);
 int			is_alive(t_philo *philo);
 int			is_satisfied(t_philo *philo);
 void		take_fork(t_philo *philo);
