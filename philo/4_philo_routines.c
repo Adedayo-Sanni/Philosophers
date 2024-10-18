@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:17:48 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/17 19:50:09 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/18 18:26:00 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*philos_routines(void *philo_arg)
 		take_fork(philo);
 		philo_eat(philo);
 		philo_sleep(philo);
-		think(philo);
+		philo_thinks(philo);
 		release_fork(philo);
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/17 19:45:45 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/18 18:25:05 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	take_fork(t_philo *philo)
 void	philo_eat(t_philo *philo)
 {
 	print_msg(philo->data->start_time - current_time(), philo, "is eating");
-	pthread_mutex_lock(philo->time_last_meal);
+	pthread_mutex_lock(philo->data->update);
 	philo->time_last_meal = current_time();
-	pthread_mutex_unlock(philo->time_last_meal);
+	pthread_mutex_unlock(philo->data->update);
 	usleep(philo->data->time_to_eat * 1000);
 }
 

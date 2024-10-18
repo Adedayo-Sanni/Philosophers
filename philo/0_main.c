@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	{
 		dinner = calloc(1, sizeof(t_dinner));
 		if (!dinner)
-			error_exit("Sorry, we are closed", 1, 0, dinner);
+			error_exit("Sorry, we are closed", 0, dinner);
 		init_dinner(dinner, argv, argc);
 	}
 	cleanup(dinner);

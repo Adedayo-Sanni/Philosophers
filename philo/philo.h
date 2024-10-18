@@ -31,6 +31,7 @@ typedef struct s_data
 	int				time_to_sleep;
 	int				nb_meals_todo;
 	int				philo_died;
+	pthread_mutex_t	*update;
 	pthread_mutex_t	*message;
 }	t_data;
 
@@ -78,7 +79,7 @@ int			is_satisfied(t_philo *philo);
 void		take_fork(t_philo *philo);
 void		philo_eat(t_philo *philo);
 void		philo_sleep(t_philo *philo);
-void		think(t_philo *philo);
+void		philo_thinks(t_philo *philo);
 void		release_fork(t_philo *philo);
 
 #endif
