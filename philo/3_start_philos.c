@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:46:08 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/16 20:05:08 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/22 18:33:40 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,34 @@
 // função para comecar os filos
 // aqui chamo a pthread join com a rotina deles
 
-void	start_philos(t_dinner *dinner)
+void	start_philos(t_dinner **dinner)
 {
 	int	i;
 
 	i = 0;
-	dinner->data->start_time = current_time();
-	while (i < dinner->data->nb_philos)
+	(*dinner)->data.start_time = current_time();
+	while (i < (*dinner)->data.nb_philos)
 	{
-		if (pthread_create(&dinner->philos[i].self_thread, NULL,
-				philos_routines, &dinner->philos[i]) != 0)
+		if (pthread_create(&(*dinner)->philos[i].self_thread, NULL,
+				philos_routines, &(*dinner)->philos[i]) != 0)
 		{
-			error_exit("The guests could not come", PHILO, dinner);
+			error_exit("The guests could not come", PHILO, (*dinner));
 			return ;
 		}
 		i++;
 	}
 	i = 0;
-	while (i < dinner->data->nb_philos)
+	while (i < (*dinner)->data.nb_philos)
 	{
-		if (pthread_join(dinner->philos[i].self_thread, NULL) != 0)
+		if (pthread_join((*dinner)->philos[i].self_thread, NULL) != 0)
 		{
-			error_exit("The guests wont leave", PHILO, dinner);
+			error_exit("The guests wont leave", PHILO, (*dinner));
 			return ;
 		}
 		i++;
 	}
 }
-
-/*Criação de threads: Aqui, uma nova thread é criada para cada filósofo.
+/* Criação de threads: Aqui, uma nova thread é criada para cada filósofo.
 pthread_create é chamado, passando o endereço da thread do 
 filósofo atual (dinner->philos[i].self_thread), um segundo argumento como NULL 
 (para usar os atributos padrão da thread), o endereço da função que a thread deve 

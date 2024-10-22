@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/18 18:25:05 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:14:01 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	take_fork(t_philo *philo)
 {
 	if (philo->philo_id % 2 == 1)
 	{
-		print_msg(philo->data->start_time - current_time(), philo,
+		print_msg(current_time() - philo->data->start_time, philo,
 			"has taken a fork");
 		pthread_mutex_lock(philo->left_fork);
-		print_msg(philo->data->start_time - current_time(), philo,
+		print_msg(current_time() - philo->data->start_time, philo,
 			"has taken a fork");
 		pthread_mutex_lock(philo->right_fork);
 	}
 	else
 	{
-		print_msg(philo->data->start_time - current_time(), philo,
+		print_msg(current_time() - philo->data->start_time, philo,
 			"has taken a fork");
 		pthread_mutex_lock(philo->right_fork);
-		print_msg(philo->data->start_time - current_time(), philo,
+		print_msg(current_time() - philo->data->start_time, philo,
 			"has taken a fork");
 		pthread_mutex_lock(philo->left_fork);
 	}
@@ -36,27 +36,35 @@ void	take_fork(t_philo *philo)
 
 void	philo_eat(t_philo *philo)
 {
-	print_msg(philo->data->start_time - current_time(), philo, "is eating");
-	pthread_mutex_lock(philo->data->update);
+	print_msg(current_time() - philo->data->start_time, philo, "is eating");
+	pthread_mutex_lock(&philo->update);
 	philo->time_last_meal = current_time();
-	pthread_mutex_unlock(philo->data->update);
+	pthread_mutex_unlock(&philo->update);
 	usleep(philo->data->time_to_eat * 1000);
 }
 
 void	philo_sleep(t_philo *philo)
 {
-	print_msg(philo->data->start_time - current_time(), philo, "is sleeping");
+	print_msg(current_time() - philo->data->start_time, philo, "is sleeping");
 	usleep(philo->data->time_to_sleep * 1000);
 }
 
 void	philo_thinks(t_philo *philo)
 {
-	print_msg(philo->data->start_time - current_time(), philo, "is thinking");
+	print_msg(current_time() - philo->data->start_time, philo, "is thinking");
 	usleep(10);
 }
 
 void	release_fork(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	if (philo->philo_id % 2 == 1)
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
+	}
 }

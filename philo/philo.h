@@ -31,8 +31,7 @@ typedef struct s_data
 	int				time_to_sleep;
 	int				nb_meals_todo;
 	int				philo_died;
-	pthread_mutex_t	*update;
-	pthread_mutex_t	*message;
+	pthread_mutex_t	message;
 }	t_data;
 
 typedef struct s_philo
@@ -40,6 +39,7 @@ typedef struct s_philo
 	pthread_t			self_thread;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
+	pthread_mutex_t		update;
 	int					philo_id;
 	int					max_meal;
 	int					meals_had;
@@ -51,7 +51,7 @@ typedef struct s_philo
 typedef struct s_dinner
 {
 	t_philo			*philos;
-	t_data			*data;
+	t_data			data;
 	pthread_mutex_t	*forks;
 }	t_dinner;
 
@@ -66,9 +66,9 @@ typedef enum e_type
 long		ft_atol(const char *nptr);
 int			validate_args(char **args);
 void		init_dinner(t_dinner *dinner, char **argv, int argc);
-void		start_data(t_dinner *dinner, char **argv, int argc);
-void		init_philos(t_dinner *dinner);
-void		init_forks(t_dinner *dinner);
+void		start_data(t_dinner **dinner, char **argv, int argc);
+void		init_philos(t_dinner **dinner);
+void		init_forks(t_dinner **dinner);
 void		cleanup(t_dinner *dinner);
 void		error_exit(char *msg, int clean, t_dinner *dinner);
 void		*philos_routines(void *philo_arg);
@@ -81,5 +81,6 @@ void		philo_eat(t_philo *philo);
 void		philo_sleep(t_philo *philo);
 void		philo_thinks(t_philo *philo);
 void		release_fork(t_philo *philo);
+void		start_philos(t_dinner **dinner);
 
 #endif
