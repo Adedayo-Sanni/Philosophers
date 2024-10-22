@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_dinner	*dinner;
+	t_dinner	dinner;
 
 	if (argc < 5 || argc > 6)
 	{
@@ -26,13 +26,8 @@ int	main(int argc, char **argv)
 	if (validate_args(argv) == 1)
 		return (1);
 	else
-	{
-		dinner = calloc(1, sizeof(t_dinner));
-		if (!dinner)
-			error_exit("Sorry, we are closed", 0, dinner);
-		init_dinner(dinner, argv, argc);
-	}
-	cleanup(dinner);
+		init_dinner(&dinner, argv, argc);
+	cleanup(&dinner);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/22 20:14:01 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:19:16 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ void	take_fork(t_philo *philo)
 	if (philo->philo_id % 2 == 1)
 	{
 		print_msg(current_time() - philo->data->start_time, philo,
-			"has taken a fork");
+			"has taken a fork L");
 		pthread_mutex_lock(philo->left_fork);
 		print_msg(current_time() - philo->data->start_time, philo,
-			"has taken a fork");
+			"has taken a fork R");
 		pthread_mutex_lock(philo->right_fork);
 	}
 	else
 	{
 		print_msg(current_time() - philo->data->start_time, philo,
-			"has taken a fork");
+			"has taken a fork R");
 		pthread_mutex_lock(philo->right_fork);
 		print_msg(current_time() - philo->data->start_time, philo,
-			"has taken a fork");
+			"has taken a fork L");
 		pthread_mutex_lock(philo->left_fork);
 	}
 }

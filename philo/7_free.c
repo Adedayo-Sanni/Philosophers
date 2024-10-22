@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:25:24 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/22 18:36:21 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:49:19 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	cleanup(t_dinner *dinner)
 {
 	if (dinner)
 	{
-		// if (dinner->data)
-		// {
-		// 	free(dinner->data);
-		// }
+		if (dinner->data)
+		{
+			free(dinner->data);
+		}
 		free(dinner);
 	}
 }

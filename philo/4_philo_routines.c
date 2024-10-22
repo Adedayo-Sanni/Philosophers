@@ -6,12 +6,11 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:17:48 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/22 18:20:50 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:42:20 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdlib.h>
 
 // aqui chamar e implementar todas as ações dos filos
 //essa função será o 3 parametro da thread join
@@ -21,7 +20,7 @@ void	*philos_routines(void *philo_arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_arg;
-	while (1)
+	while (is_alive(philo) == 1 && is_satisfied(philo) == 0)
 	{
 		take_fork(philo);
 		philo_eat(philo);

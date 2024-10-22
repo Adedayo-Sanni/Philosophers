@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/22 18:24:25 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:38:26 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ long long	current_time(void)
 
 void	print_msg(long long time, t_philo *philo, char *msg)
 {
-	if (!philo->data->philo_died)
-	{
-		pthread_mutex_lock(&philo->data->message);
-		printf("%lld %d %s\n", time, philo->philo_id, msg);
-		pthread_mutex_unlock(&philo->data->message);
-	}
+	// if (!philo->data->philo_died)
+	// {}
+	pthread_mutex_lock(&philo->data->message);
+	printf("%lld %d %s\n", time, philo->philo_id, msg);
+	pthread_mutex_unlock(&philo->data->message);
 }
