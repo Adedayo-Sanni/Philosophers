@@ -6,14 +6,11 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:46:08 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/23 19:54:03 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:58:02 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// função para comecar os filos
-// aqui chamo a pthread join com a rotina deles
 
 void	start_philos(t_dinner *dinner)
 {
@@ -58,7 +55,7 @@ int	is_alive(t_philo *philo)
 
 int	is_satisfied(t_philo *philo)
 {
-	if (philo->meals_had < philo->data->nb_meals_todo)
+	if (philo->meals_had == philo->data->nb_meals_todo)
 		return (0);
 	return (1);
 }
