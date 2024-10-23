@@ -6,23 +6,17 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:25:24 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/22 20:49:19 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/23 18:43:29 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	cleanup(t_dinner *dinner)
-{
-	if (dinner)
-	{
-		if (dinner->data)
-		{
-			free(dinner->data);
-		}
-		free(dinner);
-	}
-}
+// void	cleanup(t_dinner *dinner)
+// {
+// 	if (dinner->data)
+// 		free(dinner->data);
+// }
 
 void	free_forks(t_dinner *dinner)
 {
@@ -40,9 +34,6 @@ void	free_forks(t_dinner *dinner)
 void	error_exit(char *msg, int clean, t_dinner *dinner)
 {
 	printf("%s", msg);
-	// if (clean >= 3)
-	// 	if (dinner.data)
-	// 		free(dinner.data);
 	if (clean >= 2)
 		free_forks(dinner);
 	if (clean >= 1)

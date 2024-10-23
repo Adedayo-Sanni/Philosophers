@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/22 20:54:25 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:13:45 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	init_dinner(t_dinner *dinner, char **argv, int argc)
 {
 	dinner->forks = NULL;
 	dinner->philos = NULL;
-	start_data(dinner, argv, argc);
+	init_data(dinner, argv, argc);
 	init_forks(dinner);
 	init_philos(dinner);
 	start_philos(dinner);
 }
 
-void	start_data(t_dinner *dinner, char **argv, int argc)
+void	init_data(t_dinner *dinner, char **argv, int argc)
 {
 	pthread_mutex_init(&dinner->data.message, NULL);
 	dinner->data.nb_philos = ft_atol(argv[1]);
@@ -49,7 +49,7 @@ void	init_philos(t_dinner *dinner)
 		dinner->philos[i].right_fork = &dinner->forks[(i + 1)
 			% dinner->data.nb_philos];
 		dinner->philos[i].meals_had = 0;
-		dinner->philos[i].time_last_meal = 0;
+		dinner->philos[i].time_last_meal = current_time();
 		dinner->philos[i].data = &dinner->data;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:46:08 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/22 20:36:55 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:54:03 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,27 @@ void	start_philos(t_dinner *dinner)
 		i++;
 	}
 }
+
+int	is_alive(t_philo *philo)
+{
+	long int	diff;
+
+	diff = current_time() - philo->time_last_meal;
+	if (diff >= philo->data->time_to_die)
+	{
+		print_msg(current_time() - philo->data->start_time, philo, "died");
+		return (0);
+	}
+	return (1);
+}
+
+int	is_satisfied(t_philo *philo)
+{
+	if (philo->meals_had < philo->data->nb_meals_todo)
+		return (0);
+	return (1);
+}
+
 /* Criação de threads: Aqui, uma nova thread é criada para cada filósofo.
 pthread_create é chamado, passando o endereço da thread do 
 filósofo atual (dinner->philos[i].self_thread), um segundo argumento como NULL 

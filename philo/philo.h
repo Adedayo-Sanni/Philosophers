@@ -66,7 +66,7 @@ typedef enum e_type
 long		ft_atol(const char *nptr);
 int			validate_args(char **args);
 void		init_dinner(t_dinner *dinner, char **argv, int argc);
-void		start_data(t_dinner *dinner, char **argv, int argc);
+void		init_data(t_dinner *dinner, char **argv, int argc);
 void		init_philos(t_dinner *dinner);
 void		init_forks(t_dinner *dinner);
 void		cleanup(t_dinner *dinner);

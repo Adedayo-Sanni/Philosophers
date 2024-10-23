@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:57:53 by adedayo           #+#    #+#             */
-/*   Updated: 2024/10/22 20:19:16 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:52:03 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	philo_eat(t_philo *philo)
 	philo->time_last_meal = current_time();
 	pthread_mutex_unlock(&philo->update);
 	usleep(philo->data->time_to_eat * 1000);
+	philo->meals_had++;
+	printf("meals had %d \n", philo->meals_had);
 }
 
 void	philo_sleep(t_philo *philo)

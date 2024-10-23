@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		return (1);
 	else
 		init_dinner(&dinner, argv, argc);
-	cleanup(&dinner);
+	//cleanup(&dinner);
 	return (0);
 }
 
