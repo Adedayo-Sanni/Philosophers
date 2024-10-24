@@ -55,7 +55,7 @@ ascii_art:
 	@echo "\033[0m"
 
 
-$(OBJFOLDER)%.o : $(SOURCES)%.c
+$(OBJFOLDER)%.o : $(SOURCES)%.c philo.h
 	$(CC) $(CFLAGS) -c $< -o $@ -g 
 
 #----------------CLEAN--------------------------#

@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:29:49 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/24 18:52:13 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/24 20:08:27 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	start_philos(t_dinner *dinner)
 		}
 		i++;
 	}
+	// monitor vem aqui
 	i = 0;
 	while (i < dinner->data.nb_philos)
 	{
@@ -48,6 +49,7 @@ int	is_alive(t_philo *philo)
 	if (diff >= philo->data->time_to_die)
 	{
 		print_msg(current_time() - philo->data->start_time, philo, "died");
+		philo->data->philo_died = 1;
 		return (0);
 	}
 	return (1);
@@ -58,6 +60,16 @@ int	is_satisfied(t_philo *philo)
 	if (philo->meals_had == philo->data->nb_meals_todo)
 		return (0);
 	return (1);
+}
+
+int	is_dead(t_philo *philo)
+{
+	int	verif;
+
+	pthread_mutex_lock(&philo->data->monitor);
+	verif = philo->data->philo_died;
+	pthread_mutex_unlock(&philo->data->monitor);
+	return (verif);
 }
 
 /* Criação de threads: Aqui, uma nova thread é criada para cada filósofo.

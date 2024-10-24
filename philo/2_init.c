@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/23 19:13:45 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/24 20:17:16 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ void	init_data(t_dinner *dinner, char **argv, int argc)
 	dinner->data.time_to_die = ft_atol(argv[2]);
 	dinner->data.time_to_eat = ft_atol(argv[3]);
 	dinner->data.time_to_sleep = ft_atol(argv[4]);
+	dinner->data.philo_died = 0;
 	if (argc == 6)
 		dinner->data.nb_meals_todo = ft_atol(argv[5]);
+	else
+		dinner->data.nb_meals_todo = -1;
 }
 
 void	init_philos(t_dinner *dinner)
@@ -41,6 +44,7 @@ void	init_philos(t_dinner *dinner)
 	if (!dinner->philos)
 		error_exit("Where is the guests?", PHILO, dinner);
 	pthread_mutex_init(&dinner->philos->update, NULL);
+	pthread_mutex_init(&dinner->data.monitor, NULL);
 	i = 0;
 	while (i < dinner->data.nb_philos)
 	{
@@ -51,6 +55,7 @@ void	init_philos(t_dinner *dinner)
 		dinner->philos[i].meals_had = 0;
 		dinner->philos[i].time_last_meal = current_time();
 		dinner->philos[i].data = &dinner->data;
+		pthread_mutex_init(&dinner->philos[i].update, NULL);
 		i++;
 	}
 }

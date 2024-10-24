@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:10 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/24 18:52:48 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/24 20:01:35 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*philos_routines(void *philo_arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_arg;
-	while (is_alive(philo) == 1 )
+	while (is_satisfied(philo) == 1 && is_dead(philo) != 1)
 	{
 		take_fork(philo);
 		philo_eat(philo);
