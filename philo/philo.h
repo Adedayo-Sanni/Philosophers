@@ -33,6 +33,7 @@ typedef struct s_data
 	int				philo_died;
 	pthread_mutex_t	monitor;
 	pthread_mutex_t	message;
+	_Atomic int		stop;
 }	t_data;
 
 typedef struct s_philo
@@ -51,9 +52,10 @@ typedef struct s_philo
 // Estrutura que contém todas as outras structs
 typedef struct s_dinner
 {
+	pthread_mutex_t	*forks;
+	pthread_t		supervisor;
 	t_philo			*philos;
 	t_data			data;
-	pthread_mutex_t	*forks;
 }	t_dinner;
 
 typedef enum e_type
@@ -86,5 +88,6 @@ void		start_philos(t_dinner *dinner);
 int			is_dead(t_philo *philo);
 void		free_forks(t_dinner *dinner);
 void		clean_philos(t_dinner *dinner);
+void		*supervisor_routine(void *arg);
 
 #endif

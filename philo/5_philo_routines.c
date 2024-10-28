@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   4_philo_routines.c                                 :+:      :+:    :+:   */
+/*   5_philo_routines.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:10 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 14:37:10 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/28 16:00:04 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*philos_routines(void *philo_arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_arg;
-	while (is_satisfied(philo) == 1 && is_dead(philo) != 1)
+	while (is_satisfied(philo) == 1)
 	{
 		take_fork(philo);
 		philo_eat(philo);

@@ -25,6 +25,7 @@ SRC = 0_main.c \
  3_start_philos.c \
  4_philo_actions.c \
  5_philo_routines.c \
+ 6_supervisor.c \
  7_free.c\
  8_utils.c \
 #--------------RULES----------------------------#

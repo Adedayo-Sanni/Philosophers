@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:29:49 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 14:36:03 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/28 16:17:24 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	start_philos(t_dinner *dinner)
 		}
 		i++;
 	}
+	if (pthread_create(&dinner->supervisor, NULL,
+			supervisor_routine, &dinner) != 0)
+	{
+		error_exit("The waiter could not come", PHILO, dinner);
+		return ;
+	}
 	i = 0;
 	while (i < dinner->data.nb_philos)
 	{
@@ -38,6 +44,7 @@ void	start_philos(t_dinner *dinner)
 		}
 		i++;
 	}
+	pthread_join(dinner->supervisor, NULL);
 }
 
 int	is_alive(t_philo *philo)
@@ -68,6 +75,5 @@ int	is_dead(t_philo *philo)
 	pthread_mutex_lock(&philo->data->monitor);
 	verif = philo->data->philo_died;
 	pthread_mutex_unlock(&philo->data->monitor);
-	print_msg(current_time() - philo->data->start_time, philo, "died");
 	return (verif);
 }
