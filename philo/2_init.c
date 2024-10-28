@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 16:28:09 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/28 18:42:13 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,36 @@ void	init_dinner(t_dinner *dinner, char **argv, int argc)
 	start_philos(dinner);
 }
 
+void	init_forks(t_dinner *dinner)
+{
+	int	i;
+
+	if (!dinner)
+		error_exit("Invalid data", DATA, dinner);
+	dinner->forks = malloc(dinner->data.nb_philos * \
+		sizeof(pthread_mutex_t));
+	if (!dinner->forks)
+	{
+		error_exit("Sorry, were out of forks", FORK, dinner);
+		return ;
+	}
+	i = 0;
+	while (i < dinner->data.nb_philos)
+	{
+		if (pthread_mutex_init(&dinner->forks[i], NULL) != 0)
+		{
+			error_exit("Sorry, were out of forks", FORK, dinner);
+			return ;
+		}
+		i++;
+	}
+}
+
 void	init_data(t_dinner *dinner, char **argv, int argc)
 {
+	dinner->data.stop = 0;
 	pthread_mutex_init(&dinner->data.message, NULL);
+	pthread_mutex_init(&dinner->data.check, NULL);
 	dinner->data.nb_philos = ft_atol(argv[1]);
 	dinner->data.time_to_die = ft_atol(argv[2]);
 	dinner->data.time_to_eat = ft_atol(argv[3]);
@@ -56,31 +83,6 @@ void	init_philos(t_dinner *dinner)
 		dinner->philos[i].time_last_meal = current_time();
 		dinner->philos[i].data = &dinner->data;
 		pthread_mutex_init(&dinner->philos[i].update, NULL);
-		i++;
-	}
-}
-
-void	init_forks(t_dinner *dinner)
-{
-	int	i;
-
-	if (!dinner)
-		error_exit("Invalid data", DATA, dinner);
-	dinner->forks = malloc(dinner->data.nb_philos * \
-		sizeof(pthread_mutex_t));
-	if (!dinner->forks)
-	{
-		error_exit("Sorry, were out of forks", FORK, dinner);
-		return ;
-	}
-	i = 0;
-	while (i < dinner->data.nb_philos)
-	{
-		if (pthread_mutex_init(&dinner->forks[i], NULL) != 0)
-		{
-			error_exit("Sorry, were out of forks", FORK, dinner);
-			return ;
-		}
 		i++;
 	}
 }

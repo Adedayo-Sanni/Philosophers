@@ -31,6 +31,7 @@ typedef struct s_data
 	int				time_to_sleep;
 	int				nb_meals_todo;
 	int				philo_died;
+	pthread_mutex_t	check;
 	pthread_mutex_t	monitor;
 	pthread_mutex_t	message;
 	_Atomic int		stop;
