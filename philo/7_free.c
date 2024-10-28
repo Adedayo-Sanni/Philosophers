@@ -6,11 +6,26 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:25:24 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 14:36:59 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:54:32 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	clean_philos(t_dinner *dinner)
+{
+	int	i;
+
+	i = dinner->data.nb_philos - 1;
+	while (i >= 0)
+	{
+		pthread_mutex_destroy(&dinner->philos[i].update);
+		i--;
+	}
+	pthread_mutex_destroy(&dinner->data.monitor);
+	free(dinner->philos);
+	dinner->philos = NULL;
+}
 
 void	free_forks(t_dinner *dinner)
 {

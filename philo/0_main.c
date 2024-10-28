@@ -12,6 +12,8 @@
 
 #include "philo.h"
 
+
+
 int	main(int argc, char **argv)
 {
 	t_dinner	dinner;
@@ -27,5 +29,11 @@ int	main(int argc, char **argv)
 		return (1);
 	else
 		init_dinner(&dinner, argv, argc);
+	clean_philos(&dinner);
+	free_forks(&dinner);
 	return (0);
 }
+
+//continuar playlist do codevault
+// não tentar implementar várias mutex ao mesmo tempo
+// faz um e testa. Rodou liso? Pode ir para outro mutex
