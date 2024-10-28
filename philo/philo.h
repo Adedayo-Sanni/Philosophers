@@ -84,5 +84,6 @@ void		philo_thinks(t_philo *philo);
 void		release_fork(t_philo *philo);
 void		start_philos(t_dinner *dinner);
 int			is_dead(t_philo *philo);
+void		free_forks(t_dinner *dinner);
 
 #endif

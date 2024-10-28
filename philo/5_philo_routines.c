@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:10 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/24 20:01:35 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:37:10 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,3 @@ void	*philos_routines(void *philo_arg)
 	}
 	return (NULL);
 }
-
-// lembrar de implementar uma lógica 
-//para metade pegar o garfo e metade não
-// por ex: dar um sleep no impares

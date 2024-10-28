@@ -23,8 +23,8 @@ SRC = 0_main.c \
  1_validate.c \
  2_init.c \
  3_start_philos.c \
- 4_philo_routines.c \
- 5_philo_actions.c \
+ 4_philo_actions.c \
+ 5_philo_routines.c \
  7_free.c\
  8_utils.c \
 #--------------RULES----------------------------#
