@@ -76,7 +76,7 @@ void		init_forks(t_dinner *dinner);
 void		cleanup(t_dinner *dinner);
 void		error_exit(char *msg, int clean, t_dinner *dinner);
 void		*philos_routines(void *philo_arg);
-void		print_msg(long long time, t_philo *philo, char *msg);
+void		print_msg(t_philo *philo, char *msg);
 long long	current_time(void);
 int			is_alive(t_philo *philo);
 int			is_satisfied(t_philo *philo);
@@ -90,5 +90,6 @@ int			is_dead(t_philo *philo);
 void		free_forks(t_dinner *dinner);
 void		clean_philos(t_dinner *dinner);
 void		*supervisor_routine(void *arg);
+void		lonely_rotine(t_philo *philo);
 
 #endif

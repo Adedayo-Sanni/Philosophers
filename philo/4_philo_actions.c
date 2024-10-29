@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:29:59 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 19:04:34 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:49:42 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,16 @@ void	take_fork(t_philo *philo)
 	{
 		if (philo->philo_id % 2 == 1)
 		{
-			print_msg(current_time() - philo->data->start_time, philo,
-				"has taken a fork L");
+			print_msg(philo, "has taken a fork");
 			pthread_mutex_lock(philo->left_fork);
-			print_msg(current_time() - philo->data->start_time, philo,
-				"has taken a fork R");
+			print_msg(philo, "has taken a fork");
 			pthread_mutex_lock(philo->right_fork);
 		}
 		else
 		{
-			print_msg(current_time() - philo->data->start_time, philo,
-				"has taken a fork R");
+			print_msg(philo, "has taken a fork");
 			pthread_mutex_lock(philo->right_fork);
-			print_msg(current_time() - philo->data->start_time, philo,
-				"has taken a fork L");
+			print_msg(philo, "has taken a fork");
 			pthread_mutex_lock(philo->left_fork);
 		}
 	}
@@ -41,7 +37,7 @@ void	philo_eat(t_philo *philo)
 {
 	if (is_dead(philo) != 1)
 	{
-		print_msg(current_time() - philo->data->start_time, philo, "is eating");
+		print_msg(philo, "is eating");
 		pthread_mutex_lock(&philo->update);
 		philo->time_last_meal = current_time();
 		pthread_mutex_unlock(&philo->update);
@@ -54,8 +50,7 @@ void	philo_sleep(t_philo *philo)
 {
 	if (is_dead(philo) != 1)
 	{
-		print_msg(current_time() - philo->data->start_time, philo,
-			"is sleeping");
+		print_msg(philo, "is sleeping");
 		usleep(philo->data->time_to_sleep * 1000);
 	}
 }
@@ -64,8 +59,7 @@ void	philo_thinks(t_philo *philo)
 {
 	if (is_dead(philo) != 1)
 	{
-		print_msg(current_time() - philo->data->start_time, philo,
-			"is thinking");
+		print_msg(philo, "is thinking");
 		usleep(10);
 	}
 }

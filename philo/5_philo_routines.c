@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:10 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 19:02:40 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:26:13 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,18 @@ void	*philos_routines(void *philo_arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_arg;
-	while (is_satisfied(philo) == 1 && is_dead(philo) != 1)
+	if (philo->data->nb_philos == 1)
+		lonely_rotine(philo);
+	else
 	{
-		take_fork(philo);
-		philo_eat(philo);
-		release_fork(philo);
-		philo_sleep(philo);
-		philo_thinks(philo);
+		while (is_satisfied(philo) == 1 && is_dead(philo) != 1)
+		{
+			take_fork(philo);
+			philo_eat(philo);
+			release_fork(philo);
+			philo_sleep(philo);
+			philo_thinks(philo);
+		}
 	}
 	return (NULL);
 }

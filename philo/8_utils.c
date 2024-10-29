@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/23 19:18:38 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:45:17 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ long long	current_time(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	print_msg(long long time, t_philo *philo, char *msg)
+void	print_msg(t_philo *philo, char *msg)
 {
 	pthread_mutex_lock(&philo->data->message);
-	printf("%lld %d %s\n", time, philo->philo_id, msg);
+	if (is_dead(philo) != 1)
+		printf("%lld %d %s\n", current_time() - philo->data->start_time,
+			philo->philo_id, msg);
 	pthread_mutex_unlock(&philo->data->message);
 }

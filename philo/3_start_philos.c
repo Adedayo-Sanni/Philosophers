@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:29:49 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 19:02:18 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/29 14:05:26 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,35 +45,4 @@ void	start_philos(t_dinner *dinner)
 		}
 		i++;
 	}
-}
-
-int	is_alive(t_philo *philo)
-{
-	long int	diff;
-
-	diff = current_time() - philo->time_last_meal;
-	if (diff >= philo->data->time_to_die)
-	{
-		print_msg(current_time() - philo->data->start_time, philo, "died");
-		philo->data->philo_died = 1;
-		return (0);
-	}
-	return (1);
-}
-
-int	is_satisfied(t_philo *philo)
-{
-	if (philo->meals_had == philo->data->nb_meals_todo)
-		return (0);
-	return (1);
-}
-
-int	is_dead(t_philo *philo)
-{
-	int	verif;
-
-	pthread_mutex_lock(&philo->data->check);
-	verif = philo->data->stop;
-	pthread_mutex_unlock(&philo->data->check);
-	return (verif);
 }
