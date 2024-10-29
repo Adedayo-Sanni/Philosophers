@@ -28,7 +28,6 @@ SRC = 0_main.c \
  6_supervisor.c \
  7_free.c\
  8_utils.c \
- one_philo.c\
 #--------------RULES----------------------------#
 
 OBJFILES = $(patsubst %.c, $(OBJFOLDER)%.o, $(SRC))

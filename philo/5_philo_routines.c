@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:10 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/29 14:26:13 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/29 20:09:44 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 // aqui chamar e implementar todas as ações dos filos
 //essa função será o 3 parametro da thread join
+
+void	lonely_rotine(t_philo *philo)
+{
+	if (is_dead(philo) != 1)
+	{
+		print_msg(philo, "has taken a fork L");
+		pthread_mutex_lock(philo->left_fork);
+		pthread_mutex_unlock(philo->left_fork);
+	}
+}
 
 void	*philos_routines(void *philo_arg)
 {
