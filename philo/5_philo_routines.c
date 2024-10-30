@@ -6,14 +6,11 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:10 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/29 20:09:44 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/30 14:55:42 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// aqui chamar e implementar todas as ações dos filos
-//essa função será o 3 parametro da thread join
 
 void	lonely_rotine(t_philo *philo)
 {
