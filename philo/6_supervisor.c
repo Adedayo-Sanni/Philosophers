@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:52:13 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/31 12:52:46 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/31 17:06:07 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	supervisor_routine(void *arg)
 				return ;
 			}
 			i++;
-			usleep(150);
+			usleep(10);
 		}
 	}
 }
