@@ -20,8 +20,10 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-//Structs
+# define TRUE 1
+# define FALSE 0
 
+//Structs
 typedef struct s_data
 {
 	short int		nb_philos;
@@ -32,6 +34,7 @@ typedef struct s_data
 	int				nb_meals_todo;
 	int				philo_died;
 	pthread_mutex_t	check;
+	pthread_mutex_t	time;
 	pthread_mutex_t	monitor;
 	pthread_mutex_t	message;
 	_Atomic int		stop;
@@ -43,6 +46,7 @@ typedef struct s_philo
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
 	pthread_mutex_t		update;
+	pthread_mutex_t		eat;
 	int					philo_id;
 	int					max_meal;
 	int					meals_had;
@@ -50,7 +54,6 @@ typedef struct s_philo
 	t_data				*data;
 }	t_philo;
 
-// Estrutura que contém todas as outras structs
 typedef struct s_dinner
 {
 	pthread_mutex_t	*forks;
@@ -89,7 +92,8 @@ void		start_philos(t_dinner *dinner);
 int			is_dead(t_philo *philo);
 void		free_forks(t_dinner *dinner);
 void		clean_philos(t_dinner *dinner);
-void		*supervisor_routine(void *arg);
+void		supervisor_routine(void *arg);
 void		lonely_rotine(t_philo *philo);
+void		update_last_meal(t_philo *philo);
 
 #endif

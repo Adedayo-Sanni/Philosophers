@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:14:46 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/29 14:45:17 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/31 12:40:19 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,18 @@ void	print_msg(t_philo *philo, char *msg)
 {
 	pthread_mutex_lock(&philo->data->message);
 	if (is_dead(philo) != 1)
+	{
+		pthread_mutex_lock(&philo->data->time);
 		printf("%lld %d %s\n", current_time() - philo->data->start_time,
 			philo->philo_id, msg);
+		pthread_mutex_unlock(&philo->data->time);
+	}
 	pthread_mutex_unlock(&philo->data->message);
+}
+
+void	update_last_meal(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->update);
+	philo->time_last_meal = current_time();
+	pthread_mutex_unlock(&philo->update);
 }

@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:51:10 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/30 14:55:42 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/30 16:36:07 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	lonely_rotine(t_philo *philo)
 {
 	if (is_dead(philo) != 1)
 	{
-		print_msg(philo, "has taken a fork L");
+		print_msg(philo, "has taken a fork");
 		pthread_mutex_lock(philo->left_fork);
 		pthread_mutex_unlock(philo->left_fork);
 	}

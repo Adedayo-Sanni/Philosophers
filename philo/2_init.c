@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:48:32 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 18:42:13 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/31 12:28:55 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_data(t_dinner *dinner, char **argv, int argc)
 	dinner->data.stop = 0;
 	pthread_mutex_init(&dinner->data.message, NULL);
 	pthread_mutex_init(&dinner->data.check, NULL);
+	pthread_mutex_init(&dinner->data.time, NULL);
 	dinner->data.nb_philos = ft_atol(argv[1]);
 	dinner->data.time_to_die = ft_atol(argv[2]);
 	dinner->data.time_to_eat = ft_atol(argv[3]);
@@ -72,6 +73,7 @@ void	init_philos(t_dinner *dinner)
 		error_exit("Where is the guests?", PHILO, dinner);
 	pthread_mutex_init(&dinner->philos->update, NULL);
 	pthread_mutex_init(&dinner->data.monitor, NULL);
+	pthread_mutex_init(&dinner->philos->eat, NULL);
 	i = 0;
 	while (i < dinner->data.nb_philos)
 	{

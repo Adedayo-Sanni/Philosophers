@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:25:24 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/28 14:54:32 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/31 12:29:56 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	clean_philos(t_dinner *dinner)
 		pthread_mutex_destroy(&dinner->philos[i].update);
 		i--;
 	}
-	pthread_mutex_destroy(&dinner->data.monitor);
+	pthread_mutex_destroy(&dinner->philos->eat);
 	free(dinner->philos);
 	dinner->philos = NULL;
 }
@@ -38,6 +38,9 @@ void	free_forks(t_dinner *dinner)
 		pthread_mutex_destroy(&dinner->forks[i]);
 	}
 	free(dinner->forks);
+	pthread_mutex_destroy(&dinner->data.check);
+	pthread_mutex_destroy(&dinner->data.monitor);
+	pthread_mutex_destroy(&dinner->data.message);
 }
 
 void	error_exit(char *msg, int clean, t_dinner *dinner)

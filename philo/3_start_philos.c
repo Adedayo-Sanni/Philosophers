@@ -6,7 +6,7 @@
 /*   By: asanni <asanni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:29:49 by asanni            #+#    #+#             */
-/*   Updated: 2024/10/29 20:08:55 by asanni           ###   ########.fr       */
+/*   Updated: 2024/10/31 12:34:47 by asanni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,14 @@ void	start_philos(t_dinner *dinner)
 	int	i;
 
 	i = 0;
+	pthread_mutex_lock(&dinner->data.time);
 	dinner->data.start_time = current_time();
+	pthread_mutex_unlock(&dinner->data.time);
 	create_thread(dinner);
-	if (pthread_create(&dinner->supervisor, NULL,
-			supervisor_routine, dinner) != 0)
-	{
-		error_exit("The waiter could not come", PHILO, dinner);
-		return ;
-	}
-	i = 0;
-	pthread_join(dinner->supervisor, NULL);
+	pthread_mutex_lock(&dinner->data.time);
+	dinner->data.start_time = current_time();
+	pthread_mutex_unlock(&dinner->data.time);
+	supervisor_routine(dinner);
 	while (i < dinner->data.nb_philos)
 	{
 		if (pthread_join(dinner->philos[i].self_thread, NULL) != 0)
